@@ -1,6 +1,6 @@
 # Trick Share
 
-## WHAT is this ?
+## What is this ?
 これは便利な裏ワザをシェアし合うSNSである。
 
 ユーザーは主に次の２種類にわかれる
