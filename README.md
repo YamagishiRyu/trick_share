@@ -1,24 +1,21 @@
-# README
+# Trick Share
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## WHAT is this ?
+これは便利な裏ワザをシェアし合うSNSである。
 
-Things you may want to cover:
+ユーザーは主に次の２種類にわかれる
+- 管理者
+- 投稿者
+管理者はその名の通りこのサイトを管理する者である。
+投稿者は裏ワザを投稿し、閲覧、検索をする。
 
-* Ruby version
+このサービスのER図を以下に示す。
 
-* System dependencies
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 環境構築
+#### 1. gitをクローンする
+#### 2. gemをいれる
+`bundle install --path vendor/bundle`
+#### 3. サーバーを立てる
+`bundle exec rails server`
