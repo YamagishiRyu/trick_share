@@ -10,6 +10,7 @@
 投稿者は裏ワザを投稿し、閲覧、検索をする。
 
 このサービスのER図を以下に示す。
+![er_graph_final 001](https://user-images.githubusercontent.com/28495614/32877271-0950136e-cae4-11e7-8d03-9f78666230f5.jpeg)
 
 
 
