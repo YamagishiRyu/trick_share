@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   root :to => redirect('static_page/help')
 
   # static page
-  get 'static_page/help', to: 'static_page#help'
-  get 'static_page/contact', to: 'static_page#contact'
+  get '/help', to: 'static_page#help'
+  get '/contact', to: 'static_page#contact'
+
+  # contributors
+  get '/signup', to: 'contributors#new'
+  resources :contributors
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
