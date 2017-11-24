@@ -11,6 +11,8 @@ class ContributorsController < ApplicationController
     @contributor = Contributor.new(user_params)
     if @contributor.save
       # success
+      flash[:success] = "Welcome to Trick Share!"
+      redirect_to @contributor
     else
       render 'new'
     end
