@@ -10,4 +10,8 @@ FactoryGirl.define do
 
     initialize_with { Contributor.find_or_create_by(email: :email) }
   end
+
+  factory :invalid_contributor, parent: :contributor do
+    password_confirmation = " "
+  end
 end
