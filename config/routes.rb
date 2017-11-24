@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root :to => redirect('static_page/help')
+  root :to => redirect('/help')
 
   # static page
   get '/help', to: 'static_page#help'
