@@ -1,0 +1,25 @@
+class ContributorsController < ApplicationController
+  def new
+    @contributor = Contributor.new
+  end
+
+  def show 
+    @contributor = Contributor.find(params[:id])
+  end
+
+  def create
+    @contributor = Contributor.new(user_params)
+    if @contributor.save
+      # success
+      flash[:success] = "Welcome to Trick Share!"
+      redirect_to @contributor
+    else
+      render 'new'
+    end
+  end
+
+  private 
+    def user_params
+      params.require(:contributor).permit(:nick_name, :email, :password, :password_confirmation)
+    end
+end

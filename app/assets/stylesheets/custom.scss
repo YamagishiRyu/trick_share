@@ -1,2 +1,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/* mixins, variables */
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizeing: border-box;
+  box_sizing: border-box;
+}
+
+
+
+
+/* debug */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @incleude box_sizing;
+}

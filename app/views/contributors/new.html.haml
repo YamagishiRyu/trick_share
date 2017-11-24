@@ -1,0 +1,25 @@
+%h1 アカウント作成
+
+%div.row
+  = form_for(@contributor, url: signup_path) do |f|
+    = render 'shared/error_messages'
+
+    %br
+    = f.label :nick_name 
+    = f.text_field :nick_name, class: 'form-control'
+
+    %br
+    = f.label :email
+    = f.text_field :email, class: 'form-control'
+
+    %br
+    = f.label :password
+    = f.text_field :password, class: 'form-control'
+
+    %br
+    = f.label :password_confirmation, 'パスワード(確認)'
+    = f.text_field :password_confirmation, class: 'form-control'
+
+    %br
+    = f.submit 'アカウント 作成', :class => 'btn btn-primary'
+    
