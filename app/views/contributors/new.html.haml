@@ -1,7 +1,7 @@
 %h1 アカウント作成
 
 %div.row
-  = form_for(@contributor) do |f|
+  = form_for(@contributor, url: signup_path) do |f|
     = render 'shared/error_messages'
 
     %br
