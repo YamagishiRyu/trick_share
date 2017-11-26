@@ -1,0 +1,21 @@
+= form_for(@contributor) do |f|
+  = render 'shared/error_messages'
+
+  %br
+  = f.label :nick_name, 'ニックネーム'
+  = f.text_field :nick_name, class: 'form-control'
+
+  %br
+  = f.label :email, 'メールアドレス'
+  = f.text_field :email, class: 'form-control'
+
+  %br
+  = f.label :password, 'パスワード'
+  = f.password_field :password, class: 'form-control'
+
+  %br
+  = f.label :password_confirmation, 'パスワード(確認)'
+  = f.password_field :password_confirmation, class: 'form-control'
+
+  %br
+  = f.submit yield(:submit_btn_text), :class => 'btn btn-primary'
