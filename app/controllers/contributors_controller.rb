@@ -1,6 +1,10 @@
 class ContributorsController < ApplicationController
-  before_action :logged_in_contributer, only: [:edit, :update]
+  before_action :logged_in_contributer, only: [:index, :edit, :update]
   before_action :correct_contributor, only: [:edit, :update]
+
+  def index
+    @contributors = Contributor.page(params[:page]).per(10)
+  end
 
   def new
     @contributor = Contributor.new
