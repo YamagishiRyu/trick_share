@@ -1,0 +1,19 @@
+%h1 ログイン
+
+%div.row
+  %div.col-md-6.col-md-offset3
+    = form_for(:session, url: login_path) do |f|
+      = f.label :email
+      = f.email_field :email, class: "form_control"
+
+      = f.label :password
+      = f.password_field :password, class: "form_control"
+
+      = f.label :remember_me, class: "checkbox inline" do
+        = f.check_box :remember_me
+        %span このアカウントを記憶する
+      
+      = f.submit "ログイン", class: "btn btn-primary"
+
+    %p アカウントを持っていませんか？
+    = link_to "サインアップ", signup_path 
