@@ -36,4 +36,17 @@ module SessionsHelper
     session.delete(:contributor_id)
     @current_contributor = nil
   end
+
+  def current_contributor?(contributor)
+    contributor == current_contributor
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
 end

@@ -1,4 +1,7 @@
 class ContributorsController < ApplicationController
+  before_action :logged_in_contributer, only: [:edit, :update]
+  before_action :correct_contributor, only: [:edit, :update]
+
   def new
     @contributor = Contributor.new
   end
@@ -20,11 +23,9 @@ class ContributorsController < ApplicationController
   end
 
   def edit
-    @contributor = Contributor.find(params[:id])
   end
 
   def update
-    @contributor = Contributor.find(params[:id])
     if @contributor.update_attributes(user_params)
       # success
       flash[:success] = "設定は更新されました"
@@ -37,5 +38,18 @@ class ContributorsController < ApplicationController
   private 
     def user_params
       params.require(:contributor).permit(:nick_name, :email, :password, :password_confirmation)
+    end
+
+    def logged_in_contributer
+      unless logged_in?
+        store_location
+        flash[:danger] = "ログインしてください"
+        redirect_to login_url
+      end
+    end
+
+    def correct_contributor
+      @contributor = Contributor.find(params[:id])
+      redirect_to(root_url) unless current_contributor?(@contributor)
     end
 end
