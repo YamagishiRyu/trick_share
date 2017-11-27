@@ -5,5 +5,8 @@
     - @contributors.each do |contributor|
       %li
         = link_to contributor.nick_name, contributor
+        - if current_contributor.admin? && !current_contributor?(contributor)
+          | 
+          = link_to '消去', contributor, method: 'delete', data: { confirm: '本当に消去しますか？' }
 
 = paginate @contributors

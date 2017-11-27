@@ -1,6 +1,7 @@
 class ContributorsController < ApplicationController
-  before_action :logged_in_contributer, only: [:index, :edit, :update]
+  before_action :logged_in_contributer, only: [:index, :edit, :update, :destroy]
   before_action :correct_contributor, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
 
   def index
     @contributors = Contributor.page(params[:page]).per(10)
@@ -39,6 +40,14 @@ class ContributorsController < ApplicationController
     end
   end
 
+  def destroy
+    delete_c = Contributor.find(params[:id])
+    name = delete_c.nick_name
+    delete_c.destroy
+    flash[:success] = '投稿者: ' + name + ' は消去されました'
+    redirect_to contributors_url
+  end
+
   private 
     def user_params
       params.require(:contributor).permit(:nick_name, :email, :password, :password_confirmation)
@@ -55,5 +64,9 @@ class ContributorsController < ApplicationController
     def correct_contributor
       @contributor = Contributor.find(params[:id])
       redirect_to(root_url) unless current_contributor?(@contributor)
+    end
+    
+    def admin_user
+      redirect_to(root_url) unless current_contributor.admin?
     end
 end
