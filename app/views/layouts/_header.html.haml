@@ -15,7 +15,7 @@
               %li 
                 = link_to 'プロフィール', current_contributor
               %li
-                = link_to '設定', '#'
+                = link_to '設定', edit_contributor_path(current_contributor)
               %li.divider
               %li
                 = link_to 'ログアウト', logout_path, method: :delete

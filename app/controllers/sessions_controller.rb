@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if contributor && contributor.authenticate(params[:session][:password])
       log_in contributor
       params[:session][:remember_token_me] == '1' ? remember(contributor) : forget(contributor)
-      redirect_to contributor
+      redirect_back_or contributor
     else
       flash.now[:danger] = 'アドレスまたはパスワードが正しくありません'
       render 'new'
