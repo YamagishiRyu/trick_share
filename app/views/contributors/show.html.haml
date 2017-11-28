@@ -1,5 +1,11 @@
 %label user email: 
 = @contributor.email
-%br
+
 %label user name:
 = @contributor.nick_name
+%div.col-md-8
+  - if @contributor.tricks.any?
+    %h3 投稿数:  #{@contributor.tricks.count}
+    %ol
+      = render @tricks
+    = paginate @tricks

@@ -1,0 +1,16 @@
+%li{id: "trick-#{trick.id}"}
+  %span.title
+    = trick.title
+
+  %br
+  %span.trick-content
+    = trick.content
+
+  %br
+  %span.duration
+    = trick.duration.to_s + '分'
+
+  %br
+  %span.timestamp
+    = time_ago_in_words(trick.created_at) + '分前'
+  

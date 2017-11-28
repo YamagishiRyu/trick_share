@@ -13,6 +13,7 @@ class ContributorsController < ApplicationController
 
   def show 
     @contributor = Contributor.find(params[:id])
+    @tricks = @contributor.tricks.page(params[:page]).per(8)
   end
 
   def create
