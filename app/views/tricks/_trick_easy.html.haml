@@ -1,0 +1,15 @@
+%li{id: "trick-#{trick.id}"}
+  %span.trick-title
+    = link_to trick.title, trick
+
+  %br
+  %span.trick-created_at
+    = time_ago_in_words(trick.created_at).to_s + '前に投稿'
+
+  %br
+  - if params[:id].nil? 
+    %span.trick-contributor
+      = link_to trick.contributor.nick_name, trick.contributor
+  - elsif current_contributor?(trick.contributor)
+    %span.destroy-btn
+      = link_to '消去', trick, method: 'delete', class: 'btn btn-primary', data: { confirm: '本当に消去しますか？' }

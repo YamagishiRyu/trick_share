@@ -37,6 +37,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use kaminari for pagination
 gem 'kaminari'
+# Use redcarpet for markdown
+gem 'redcarpet'
+# Use coderay to inspect code type
+gem 'coderay'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127043411) do
+ActiveRecord::Schema.define(version: 20171127062710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,4 +25,16 @@ ActiveRecord::Schema.define(version: 20171127043411) do
     t.boolean "admin", default: false
   end
 
+  create_table "tricks", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "duration"
+    t.bigint "contributor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contributor_id", "created_at"], name: "index_tricks_on_contributor_id_and_created_at"
+    t.index ["contributor_id"], name: "index_tricks_on_contributor_id"
+  end
+
+  add_foreign_key "tricks", "contributors"
 end

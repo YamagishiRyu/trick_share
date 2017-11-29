@@ -13,6 +13,7 @@ class ContributorsController < ApplicationController
 
   def show 
     @contributor = Contributor.find(params[:id])
+    @tricks = @contributor.tricks.page(params[:page]).per(8)
   end
 
   def create
@@ -51,14 +52,6 @@ class ContributorsController < ApplicationController
   private 
     def user_params
       params.require(:contributor).permit(:nick_name, :email, :password, :password_confirmation)
-    end
-
-    def logged_in_contributer
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてください"
-        redirect_to login_url
-      end
     end
 
     def correct_contributor

@@ -1,0 +1,13 @@
+%h1 #{@trick.title}
+
+%label 投稿者:
+= link_to @trick.contributor.nick_name, @trick.contributor
+
+%label 所要時間:
+= @trick.duration.to_s + '分'
+
+- if current_contributor?(@trick.contributor)
+  = link_to '編集', edit_trick_path(@trick)
+
+%p
+  = markdown(@trick.content).html_safe

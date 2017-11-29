@@ -1,0 +1,16 @@
+= form_for(@trick) do |f|
+  = render 'shared/error_messages', object: f.object
+  %div.field
+    = f.label :title, 'タイトル'
+    = f.text_field :title
+  %div.field
+    = f.label :content, '内容(マークダウンで書けます)'
+    %br
+    = f.text_area :content, placeholder: "内容を追加"
+  %div.field
+    = f.label :duration, '所用時間'
+    = f.text_field :duration 
+    分
+  
+  = f.submit yield(:submit_btn_text), :class => 'btn btn-primary'
+
