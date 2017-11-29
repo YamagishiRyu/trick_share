@@ -54,14 +54,6 @@ class ContributorsController < ApplicationController
       params.require(:contributor).permit(:nick_name, :email, :password, :password_confirmation)
     end
 
-    def logged_in_contributer
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてください"
-        redirect_to login_url
-      end
-    end
-
     def correct_contributor
       @contributor = Contributor.find(params[:id])
       redirect_to(root_url) unless current_contributor?(@contributor)
