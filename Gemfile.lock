@@ -165,6 +165,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redcarpet (3.4.0)
     rspec-core (3.7.0)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -237,6 +238,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap-sass
   byebug
+  coderay
   coffee-rails (~> 4.2)
   erb2haml
   factory_girl_rails
@@ -251,6 +253,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.4)
+  redcarpet
   rspec-rails
   sass-rails (~> 5.0)
   spring
