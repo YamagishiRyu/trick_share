@@ -1,12 +1,12 @@
 %header.navbar.navbar-fixed_top.navbar-inverse
   %div.container
-    = link_to 'Google', 'http://www.google.com'
     = link_to 'TrickShare', '/'
     %nav
       %ul.nav.navbar-nav.navbar-right
         %li
-          = link_to 'Yahoo!', 'http://www.yahoo.com'
         - if logged_in?
+          %li
+            = link_to '新規投稿', new_trick_path, class: 'btn btn-primay'
           %li.dropdown
             %a.dropdown-toggle{:href => '#', :data => {:toggle => 'dropdown'}} 
               アカウント 

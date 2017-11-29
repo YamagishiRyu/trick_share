@@ -1,0 +1,4 @@
+%ol
+  - @tricks.each do |trick| 
+    = render 'trick_easy', trick: trick 
+= paginate @tricks

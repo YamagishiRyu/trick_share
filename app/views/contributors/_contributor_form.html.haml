@@ -1,5 +1,5 @@
 = form_for(@contributor) do |f|
-  = render 'shared/error_messages'
+  = render 'shared/error_messages', object: f.object
 
   %br
   = f.label :nick_name, 'ニックネーム'
