@@ -6,6 +6,8 @@ class Trick < ApplicationRecord
   has_many :comments
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings, source: :tag
+  has_many :need_tools, dependent: :destroy
+  has_many :tools, through: :need_tools, source: :tool
 
   # order
   default_scope -> { order(created_at: :desc) }
