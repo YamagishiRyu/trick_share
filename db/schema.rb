@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130143338) do
+ActiveRecord::Schema.define(version: 20171130143811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20171130143338) do
     t.index ["contributor_id", "trick_id"], name: "index_favorites_on_contributor_id_and_trick_id", unique: true
     t.index ["contributor_id"], name: "index_favorites_on_contributor_id"
     t.index ["trick_id"], name: "index_favorites_on_trick_id"
+  end
+
+  create_table "need_tools", force: :cascade do |t|
+    t.integer "trick_id"
+    t.integer "tool_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tool_id"], name: "index_need_tools_on_tool_id"
+    t.index ["trick_id", "tool_id"], name: "index_need_tools_on_trick_id_and_tool_id", unique: true
+    t.index ["trick_id"], name: "index_need_tools_on_trick_id"
   end
 
   create_table "taggings", force: :cascade do |t|
