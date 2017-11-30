@@ -1,0 +1,2 @@
+= form_for(current_contributor.favorites.find_by(trick_id: @trick.id), html: { method: :delete }, remote: true) do |f|
+  = f.submit 'いいね解除', class: 'btn'
