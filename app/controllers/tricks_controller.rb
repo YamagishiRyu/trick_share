@@ -59,6 +59,22 @@ class TricksController < ApplicationController
     redirect_to current_contributor
   end
 
+  def search
+    word = params[:search_word]
+    res = Trick.where(or_like('title', word))
+    res += Trick.where(or_like('content', word))
+    res += Trick.joins(:tags).where(or_like('tags.name', word))
+    res += Trick.joins(:tools).where(or_like('tools.name', word))
+    res += Trick.joins(:contributor).where(or_like('contributors.nick_name', word))
+    res.uniq!
+    if res.present?
+      @tricks = Kaminari.paginate_array(res).page(params[:page]).per(10)
+    else
+      @tricks = Trick.all.page(params[:page]).per(10)
+    end
+    render 'index'
+  end
+
   private
     def tricks_params
       params.require(:trick).permit(:title, :content, :duration)
@@ -67,5 +83,13 @@ class TricksController < ApplicationController
     def correct_contributor
       @trick = Trick.find(params[:id])
       redirect_to @trick unless current_contributor?(@trick.contributor)
+    end
+
+    def or_like(column_name, keyword_text)
+      keywords = keyword_text.split(/[[:space:]]+/).reject(&:empty?)
+      return nil if keywords.empty?
+      like_texts = ["#{column_name} like ?"] * keywords.size
+      and_like_text = like_texts.join(" OR ")
+      [and_like_text].concat(keywords.map{|keyword| "%#{keyword}%"})
     end
 end
