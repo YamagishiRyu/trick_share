@@ -1,6 +1,8 @@
 class Trick < ApplicationRecord
   # association
   belongs_to :contributor
+  has_many :favorites, dependent: :destroy
+  has_many :liked_contributors, through: :favorites, source: :contributor
 
   # order
   default_scope -> { order(created_at: :desc) }
