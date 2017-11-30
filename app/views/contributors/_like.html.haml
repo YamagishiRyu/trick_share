@@ -1,0 +1,4 @@
+= form_for(current_contributor.favorites.build, remote: true) do |f|
+  %div
+    = hidden_field_tag :trick_id, @trick.id
+  = f.submit 'いいね', class: 'btn btn-primary'

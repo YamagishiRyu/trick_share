@@ -9,5 +9,7 @@
 - if current_contributor?(@trick.contributor)
   = link_to '編集', edit_trick_path(@trick)
 
+= render 'contributors/like_form'
+
 %p
   = markdown(@trick.content).html_safe

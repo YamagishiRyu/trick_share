@@ -1,0 +1,6 @@
+- unless current_contributor.tricks.include?(@trick)
+  %div#like_form
+    - if current_contributor.like?(@trick)
+      = render 'contributors/unlike'
+    - else
+      = render 'contributors/like'

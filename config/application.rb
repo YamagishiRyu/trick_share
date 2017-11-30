@@ -32,5 +32,7 @@ module TrickShare
       g.test_framework :rspec, view_specs: false, fixture: true
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
+
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

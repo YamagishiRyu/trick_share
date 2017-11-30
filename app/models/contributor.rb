@@ -1,6 +1,8 @@
 class Contributor < ApplicationRecord
   attr_accessor :remember_token
 
+  has_many :favorites, dependent: :destroy
+  has_many :favo_tricks, through: :favorites, source: :trick
   has_many :tricks, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -30,5 +32,19 @@ class Contributor < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def like(trick)
+    favorites.create(trick_id: trick.id)
+  end
+
+  def unlike(trick)
+    if t = favorites.find_by(trick_id: trick.id)
+      t.destroy
+    end
+  end
+
+  def like?(trick)
+    favo_tricks.include?(trick)
   end
 end
