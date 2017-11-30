@@ -11,6 +11,10 @@
     = f.label :duration, '所用時間'
     = f.text_field :duration 
     分
+  %div#tags-input
+    %label 
+      タグ
+    = text_field_tag 'tag_list', @tag_list, "data-role" => "tagsinput"
   
-  = f.submit yield(:submit_btn_text), :class => 'btn btn-primary'
+  %input{:type=> "button", :onclick=>"submit();", :value=> yield(:submit_btn_text), :class=>"btn btn-primary"}
 
