@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :trick
 
   # order
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(created_at: :asc) }
 
   # validation
   validates :contributor_id, presence: true
