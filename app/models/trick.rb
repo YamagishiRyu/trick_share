@@ -34,4 +34,21 @@ class Trick < ApplicationRecord
       self.tags << tagging_tag
     end
   end
+
+  def save_tools(tools)
+    current_tools = self.tools.pluck(:name) unless self.tools.nil?
+    old_tools = current_tools - tools
+    new_tools = tools - current_tools
+
+    # destroy old need_tools
+    old_tools.each do |old_name|
+      self.tools.delete Tool.find_by(name: old_name)
+    end
+
+    # create new need_tools
+    new_tools.each do |new_name|
+      needed_tool = Tool.find_or_create_by(name: new_name)
+      self.tools << needed_tool
+    end
+  end
 end
