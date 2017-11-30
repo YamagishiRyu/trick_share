@@ -1,10 +1,13 @@
 class Contributor < ApplicationRecord
   attr_accessor :remember_token
 
+  # association
+  has_many :tricks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favo_tricks, through: :favorites, source: :trick
-  has_many :tricks, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
+  # validation
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :nick_name, presence: true, length: { maximum: 30 }
