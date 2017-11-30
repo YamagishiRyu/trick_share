@@ -12,7 +12,9 @@
     = f.text_field :duration 
     分
   %div#tags-input
-    = text_field_tag 'a',"a, b", "data-role" => "tagsinput"
+    %label 
+      タグ
+    = text_field_tag 'tag_list', @tag_list, "data-role" => "tagsinput"
   
   %input{:type=> "button", :onclick=>"submit();", :value=> yield(:submit_btn_text), :class=>"btn btn-primary"}
 

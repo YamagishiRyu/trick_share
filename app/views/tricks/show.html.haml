@@ -9,8 +9,14 @@
 %label 所要時間:
 = @trick.duration.to_s + '分'
 
+%label タグ:
+- @trick.tags.each do |tag|
+  %span{:style => 'background:pink;'}
+    #{tag.name},
+
+%br
 - if current_contributor?(@trick.contributor)
-  = link_to '編集', edit_trick_path(@trick)
+  = link_to '編集', edit_trick_path(@trick), :class=>"btn btn-primary"
 
 = render 'contributors/like_form'
 %hr
