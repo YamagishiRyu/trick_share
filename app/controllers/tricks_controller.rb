@@ -15,10 +15,12 @@ class TricksController < ApplicationController
     store_location
     if @trick.save
       @trick.save_tags(params[:tag_list].split(',')) 
+      @trick.save_tools(params[:tool_list].split(','))
       flash[:success] = "投稿されました！"
       redirect_back_or current_contributor 
     else
       @tag_list = params[:tag_list]
+      @tool_list = params[:tool_list]
       render :new
     end
   end
@@ -31,16 +33,19 @@ class TricksController < ApplicationController
   def edit
     @trick = Trick.find(params[:id])
     @tag_list = @trick.tags.map{|t| t.name}.join(',')
+    @tool_list = @trick.tools.map{|t| t.name}.join(',')
   end
 
   def update
     if @trick.update_attributes(tricks_params)
       # success
       @trick.save_tags(params[:tag_list].split(',')) 
+      @trick.save_tools(params[:tool_list].split(','))
       flash[:success] = '更新しました'
       redirect_to @trick
     else
       @tag_list = params[:tag_list]
+      @tool_list = params[:tool_list]
       render 'edit'
     end
   end

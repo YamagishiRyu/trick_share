@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130122244) do
+ActiveRecord::Schema.define(version: 20171130143811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20171130122244) do
     t.index ["trick_id"], name: "index_favorites_on_trick_id"
   end
 
+  create_table "need_tools", force: :cascade do |t|
+    t.integer "trick_id"
+    t.integer "tool_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tool_id"], name: "index_need_tools_on_tool_id"
+    t.index ["trick_id", "tool_id"], name: "index_need_tools_on_trick_id_and_tool_id", unique: true
+    t.index ["trick_id"], name: "index_need_tools_on_trick_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "trick_id"
     t.integer "tag_id"
@@ -56,6 +66,12 @@ ActiveRecord::Schema.define(version: 20171130122244) do
   end
 
   create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tools", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

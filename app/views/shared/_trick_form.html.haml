@@ -15,6 +15,10 @@
     %label 
       タグ
     = text_field_tag 'tag_list', @tag_list, "data-role" => "tagsinput"
+  %div#tools-input
+    %label 
+      必要な道具
+    = text_field_tag 'tool_list', @tool_list, "data-role" => "tagsinput"
   
   %input{:type=> "button", :onclick=>"submit();", :value=> yield(:submit_btn_text), :class=>"btn btn-primary"}
 
