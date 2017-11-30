@@ -1,0 +1,2 @@
+class NeedTool < ApplicationRecord
+end
