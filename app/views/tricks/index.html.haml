@@ -1,4 +1,12 @@
-%ol
-  - @tricks.each do |trick| 
-    = render 'trick_easy', trick: trick 
+%h1
+  Trick Share
+
+%hr
+
+= form_tag({:controller=>'tricks', :action=>'search'}) do |f|
+  = text_field_tag 'search_word'
+  = submit_tag '検索', :class => 'btn btn-primary'
+
+%ol#trick-list
+  = render partial: "trick_easy", collection: @tricks, as: :trick 
 = paginate @tricks

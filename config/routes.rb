@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   # tricks
-  resources :tricks
+  resources :tricks do
+    collection do
+      post :search
+    end
+  end
 
   # favorites
   resources :favorites, only: [:create, :destroy]
