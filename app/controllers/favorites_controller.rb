@@ -11,7 +11,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @trick = Trick.find(Favorite.find(params[:id]).trick_id)
+    @trick = Favorite.find(params[:id]).trick
     current_contributor.unlike(@trick)
     respond_to do |format|
       format.html { redirect_to @trick }

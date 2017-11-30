@@ -1,4 +1,7 @@
+- provide(:submit_btn_text, 'コメントする')
+
 %h1 #{@trick.title}
+%hr{:style => "height:15px"}
 
 %label 投稿者:
 = link_to @trick.contributor.nick_name, @trick.contributor
@@ -10,6 +13,22 @@
   = link_to '編集', edit_trick_path(@trick)
 
 = render 'contributors/like_form'
+%hr
 
 %p
   = markdown(@trick.content).html_safe
+
+%hr
+
+- if @trick.comments.any?
+  コメントは
+  = @trick.comments.count
+  件です
+  - @trick.comments.each do |comment|
+    = render comment
+- else
+  コメントはありません。
+
+%hr
+%p
+  = render 'shared/comment_form'

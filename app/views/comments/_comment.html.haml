@@ -1,0 +1,9 @@
+%hr{ width: 400 , align: 'left' }
+%h5
+  = link_to comment.contributor.nick_name, comment.contributor
+
+#{comment.created_at.year}/#{comment.created_at.month}/#{comment.created_at.day}  #{comment.created_at.hour}:#{comment.created_at.min}
+= markdown(comment.content).html_safe
+
+- if current_contributor.admin?
+  = link_to '消去', comment, method: 'delete', data: { confirm: '本当に消去しますか？' }

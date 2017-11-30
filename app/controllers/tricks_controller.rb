@@ -23,6 +23,7 @@ class TricksController < ApplicationController
   
   def show
     @trick = Trick.find(params[:id])
+    @comment = current_contributor.comments.build
   end 
 
   def edit

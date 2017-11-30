@@ -1,16 +1,20 @@
 class Contributor < ApplicationRecord
   attr_accessor :remember_token
 
+  # association
+  has_many :tricks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favo_tricks, through: :favorites, source: :trick
-  has_many :tricks, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
+  # validation
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :nick_name, presence: true, length: { maximum: 30 }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  # session
   def Contributor.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
@@ -34,6 +38,7 @@ class Contributor < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  # favorite
   def like(trick)
     favorites.create(trick_id: trick.id)
   end

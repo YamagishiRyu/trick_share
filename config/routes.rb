@@ -22,5 +22,8 @@ Rails.application.routes.draw do
   # favorites
   resources :favorites, only: [:create, :destroy]
 
+  # comments
+  resources :comments, only: [:create, :destroy]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
