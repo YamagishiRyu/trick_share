@@ -12,7 +12,12 @@
 %label タグ:
 - @trick.tags.each do |tag|
   %span{:style => 'background:pink;'}
-    #{tag.name},
+    #{tag.name}
+
+%label 必要な道具
+- @trick.tools.each do |tool|
+  %span{:style => 'background:yellow;'}
+    #{tool.name}
 
 %br
 - if current_contributor?(@trick.contributor)
