@@ -4,6 +4,8 @@ class Trick < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :liked_contributors, through: :favorites, source: :contributor
   has_many :comments
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings, source: :tags
 
   # order
   default_scope -> { order(created_at: :desc) }
