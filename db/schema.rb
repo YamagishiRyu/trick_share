@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127062710) do
+ActiveRecord::Schema.define(version: 20171129222942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20171127062710) do
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "admin", default: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "contributor_id"
+    t.integer "trick_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contributor_id", "trick_id"], name: "index_favorites_on_contributor_id_and_trick_id", unique: true
+    t.index ["contributor_id"], name: "index_favorites_on_contributor_id"
+    t.index ["trick_id"], name: "index_favorites_on_trick_id"
   end
 
   create_table "tricks", force: :cascade do |t|
