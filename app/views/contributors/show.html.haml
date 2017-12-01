@@ -6,7 +6,7 @@
 %div.col-md-8
   - if @contributor.tricks.any?
     %h3 投稿数:  #{@contributor.tricks.count}
-    %ol
+    %ol.list-unstyled
     - @tricks.each do |trick| 
       = render 'tricks/trick_easy', trick: trick 
     = paginate @tricks

@@ -4,6 +4,6 @@
   %div.field
     = f.label :content, 'コメント'
     %br
-    = f.text_area :content
+    = f.text_area :content, style: "width: 60vw; height: 5vw; background: #f2f2f2;"
   = f.submit yield(:submit_btn_text), :class => 'btn btn-primary'
 

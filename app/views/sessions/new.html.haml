@@ -1,19 +1,29 @@
 %h1 ログイン
 
 %div.row
-  %div.col-md-6.col-md-offset3
+  %div.col-md-10.col-md-offset3
     = form_for(:session, url: login_path) do |f|
-      = f.label :email
-      = f.email_field :email, class: "form_control"
 
-      = f.label :password
-      = f.password_field :password, class: "form_control"
+      %div.col-md-10.form-group
+        = f.label :email, class: 'control-label col-md-2'
+        = f.email_field :email, class: "form_control col-md-8"
+  
+      %div.col-md-10.form-group
+        = f.label :password, class: 'control-label col-md-2'
+        = f.password_field :password, class: "form_control col-md-8"
 
-      = f.label :remember_me, class: "checkbox inline" do
-        = f.check_box :remember_me
-        %span このアカウントを記憶する
+      %div.col-md-10.form-group
+        = f.label :remember_me, class: "checkbox inline" do
+          = f.check_box :remember_me
+          %span このアカウントを記憶する
       
-      = f.submit "ログイン", class: "btn btn-primary"
+      %div.col-md-10.form-group
+        = f.submit "ログイン", class: "btn btn-primary"
 
-    %p アカウントを持っていませんか？
-    = link_to "サインアップ", signup_path 
+  %br
+  %br
+  %br
+
+  %div.col-md-10
+    %h5.col-md-4 アカウントを持っていませんか？
+    = link_to "アカウント作成", signup_path 
