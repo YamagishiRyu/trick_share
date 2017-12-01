@@ -4,7 +4,7 @@ class ContributorsController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @contributors = Contributor.page(params[:page]).per(10)
+    @contributors = Contributor.page(params[:page]).per(20)
   end
 
   def new

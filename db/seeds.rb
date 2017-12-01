@@ -14,7 +14,7 @@ Contributor.create!(nick_name: 'administer',
                     admin: true)
 
 # 99 contributors
-99.times do |n|
+30.times do |n|
   Faker::Config.locale = :ja
   nick_name = Faker::Name.name
   email = Faker::Internet.email
@@ -23,4 +23,5 @@ Contributor.create!(nick_name: 'administer',
                       email: email,
                       password: password,
                       password_confirmation: password)
+
 end

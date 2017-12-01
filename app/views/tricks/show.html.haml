@@ -6,28 +6,34 @@
 %label 投稿者:
 = link_to @trick.contributor.nick_name, @trick.contributor
 
+%br
 %label 所要時間:
 = @trick.duration.to_s + '分'
 
+%br
 %label タグ:
 - @trick.tags.each do |tag|
   %span{:style => 'background:pink;'}
     #{tag.name}
 
-%label 必要な道具
+%br
+%label 必要な道具:
 - @trick.tools.each do |tool|
   %span{:style => 'background:yellow;'}
     #{tool.name}
 
 %br
+%label いいね数: #{@trick.favorites.count}
+
 - if current_contributor?(@trick.contributor)
   = link_to '編集', edit_trick_path(@trick), :class=>"btn btn-primary"
 
 = render 'contributors/like_form'
 %hr
 
-%p
-  = markdown(@trick.content).html_safe
+%div.trick-content
+  %p
+    = markdown(@trick.content).html_safe
 
 %hr
 
@@ -43,3 +49,6 @@
 %hr
 %p
   = render 'shared/comment_form'
+
+%hr
+= link_to '一覧に戻る', tricks_path, class: "btn btn-primary"

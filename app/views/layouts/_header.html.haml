@@ -1,12 +1,12 @@
-%header.navbar.navbar-fixed_top.navbar-inverse
+%header.navbar.navbar-fixed_top.navbar-inverse.bg-primary
   %div.container
-    = link_to 'TrickShare', '/'
+    = link_to 'Trick Share', '/', id: 'logo'
     %nav
       %ul.nav.navbar-nav.navbar-right
         %li
         - if logged_in?
           %li
-            = link_to '新規投稿', new_trick_path, class: 'btn btn-primay'
+            = link_to '新規投稿', new_trick_path, class: 'btn'
           %li.dropdown
             %a.dropdown-toggle{:href => '#', :data => {:toggle => 'dropdown'}} 
               アカウント 
