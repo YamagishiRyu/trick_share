@@ -3,7 +3,7 @@ class TricksController < ApplicationController
   before_action :correct_contributor, only: [:edit, :update]
 
   def index
-    @tricks = Trick.all.order('updated_at DESC').page(params[:page]).per(10)
+    @tricks = Trick.includes(:contributor).all.order('updated_at DESC').page(params[:page]).per(10)
   end
 
   def new
