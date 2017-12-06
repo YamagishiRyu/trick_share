@@ -46,7 +46,32 @@ footer ul li {
 
 .trick-content {
   background: #f2f2f2;
+  display: inline-block;
 }
+
+.tag-content {
+  display: inline-block;
+  height: 20px;
+  line-height: 5px;
+}
+
+.tag-count {
+  display: inline-block;
+  position: relative;
+  top: -5px;
+  background: white;
+  color: red;
+  height: 15px;
+  width: 15px;
+}
+
+.tag-count-text {
+  display: inline-block;
+  position: relative;
+  top: 6px;
+}
+  
+
 /* debug */
 .debug_dump {
   clear: both;
